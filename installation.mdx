@@ -1,0 +1,64 @@
+---
+title: "Installation"
+icon: "download"
+---
+<Steps>
+  <Step title="Install the Package">
+    These are instructions or content that only pertain to the first step.
+    <CodeGroup>
+      ```bash npm
+      npm install patch-sdk
+      ```
+      ```bash pnpm
+      pnpm add patch-sdk
+      ```
+      ```bash yarn
+      yarn add patch-sdk
+      ```
+      ```bash bun
+      bun add patch-sdk
+      ```
+      </CodeGroup>
+  </Step>
+  <Step title="Set Environment Variables">
+    These are instructions or content that only pertain to the second step.
+      ```typescript .env
+      PATCH_SECRET_KEY=
+      ```
+  </Step>
+  <Step title="Import <PatchProvider> component">
+    Add the PatchProvider component to your project root. PatchProvider allows your app to securely communicate with Patch.
+    #### Properties
+    <ParamField path="organizationId" type="string" required>
+      Example
+    </ParamField>
+    <ParamField path="token" type="string" required>
+      Example
+    </ParamField>
+    <CodeGroup>
+        ```tsx lines highlight={2,12,14} next-js
+        // layout.tsx
+        import { PatchProvider } from "patch-sdk/server";
+
+        export default async function RootLayout({
+          children,
+        }: Readonly<{
+          children: React.ReactNode;
+        }>) {
+          return (
+            <html lang="en">
+              <body>
+                <PatchProvider organizationId="organization-id-here" token="jwt-token-here">
+                  {children}
+                </PatchProvider>
+              </body>
+            </html>
+          );
+        }
+        ```
+      </CodeGroup>
+  </Step>
+  <Step title="That's it!">
+    That's it! You now have the bare minimum requirements to use Patch.
+  </Step>
+</Steps>
